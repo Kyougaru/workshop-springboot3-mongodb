@@ -1,21 +1,20 @@
 package com.kyougaru.workshopmongo.services;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kyougaru.workshopmongo.domain.User;
+import com.kyougaru.workshopmongo.repositories.UserRepository;
 
 @Service
 public class UserService {
 	
+	@Autowired
+	private UserRepository repository;
+	
 	public List<User> findAll() {
-		List<User> users = new ArrayList<>();
-		User maria = new User("1", "Maria Brown", "maria@gmail.com");
-		User alex = new User("2", "Alex Green", "alex@gmail.com");
-		users.addAll(Arrays.asList(maria, alex));
-		return users;
+		return repository.findAll();
 	}
 }
